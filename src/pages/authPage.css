@@ -1,0 +1,8 @@
+.auth-page-clickable {
+    color: rgb(0, 247, 255);
+
+    &:hover {
+        color: rgb(0, 174, 255);
+        cursor: pointer;
+    }
+}
