@@ -4,6 +4,7 @@ import { Col, Container, Image, Row, Stack } from 'react-bootstrap';
 import LoginForm from '../components/Auth/LoginForm';
 import ImagesDisplay from '../components/Auth/ImagesDisplay';
 import SignUpForm from '../components/Auth/SignUpForm';
+import PageLayout from '../layouts/PageLayout';
 
 export default function AuthPage() {
 
