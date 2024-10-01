@@ -11,7 +11,6 @@ export default function AuthPage() {
     const [loginForm, setLoginForm] = useState(() => true)
 
   return (
-    <PageLayout>
     <Container fluid className='d-flex align-items-center justify-content-center min-vh-100' style={{backgroundColor: "black"}}>
         <Row style={{width: "100%"}}>
             <Col md={{span: 3, offset: 3}} className='align-items-center justify-content-center'  >
@@ -47,6 +46,5 @@ export default function AuthPage() {
             </Col>
         </Row>
     </Container>
-    </PageLayout>
   );
 }
