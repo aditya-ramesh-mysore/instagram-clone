@@ -3,6 +3,7 @@ import {useLocation} from 'react-router-dom';
 import AuthPage from '../pages/AuthPage';
 import { Col, Container, Row } from 'react-bootstrap';
 import SideBar from '../components/SideBar/SideBar';
+import HomePage from '../pages/HomePage/HomePage';
 
 export default function PageLayout({children}) {
     const {pathname} = useLocation()
@@ -14,16 +15,16 @@ export default function PageLayout({children}) {
                 <React.Fragment>
                     <Container fluid>
                         <Row>
-                            <Col lg={2} style={{height: "100vh", backgroundColor: "black"}}>
+                            <Col lg={2} style={{ backgroundColor: "black"}}>
                                 <SideBar />
                             </Col>
-                            <Col>
-                                <h1>Main content</h1>
+                            <Col style={{backgroundColor: "black"}}>
+                                {children}
                             </Col>
                         </Row>
                         
                     </Container>
-                    {children}
+                    
                 </React.Fragment>
             )
     } </>
