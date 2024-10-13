@@ -15,7 +15,7 @@ export default function FeedCommentForm() {
                 backgroundColor: 'black',
                 padding: '10px'
             }}/>
-            <Button variant="outline-primary">Post</Button>
+            <Button variant="outline-primary" size='sm'>Post</Button>
         </Form>
     );
 }

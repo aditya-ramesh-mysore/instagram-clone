@@ -1,0 +1,23 @@
+.post-item {
+    position: relative;
+    cursor: pointer;
+  }
+  .post-hover-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .post-item:hover .post-hover-overlay {
+    opacity: 1;
+  }
+  .post-hover-overlay i {
+    font-size: 1.5rem;
+  }
