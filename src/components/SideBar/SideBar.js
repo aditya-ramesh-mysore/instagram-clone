@@ -6,7 +6,7 @@ import SideBarItem from './SideBarItem';
 export default function SideBar() {
     return ( <> 
     <Nav className="flex-column">
-        <Stack direction='vertical' gap={3}>
+        <Stack direction='vertical' gap={3} style={{marginTop: "5px"}}>
         
         <SideBarItem >
             <InstagramLogo className="me-2"/>

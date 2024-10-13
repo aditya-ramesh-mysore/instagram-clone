@@ -16,9 +16,9 @@ export default function FeedPostHeader({username, avatar}) {
           />
         
         <div className="text-light">
-          <strong>{username}</strong> <span className="text-muted">1w</span>
+          <strong>{username}</strong> <span style={{color: "grey"}}>1w</span>
         </div>
-        <Button variant="outline-primary" className="ms-auto text-primary">
+        <Button variant="outline-primary" className="ms-auto text-primary" size='sm'>
           Unfollow
         </Button>
       </div>
