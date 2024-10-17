@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Form, Stack, Image, Alert } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+import GoogleAuth from './GoogleAuth';
 
 export default function LoginForm() {
 
@@ -31,10 +32,7 @@ export default function LoginForm() {
                 Log In
             </Button>
             <p color='white' className="text-center my-2">OR</p>
-            <Button variant="outline-info" className="w-100 mb-2">
-                <Image src='/images/google.png' width={20} height={20} className="me-2" />
-                Log in with Google
-            </Button>
+            <GoogleAuth />
         </Stack>      
         
     </Form> 
