@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { auth, firestore } from '../firebase/firebase';
 import {doc, setDoc} from "firebase/firestore";
@@ -6,22 +6,23 @@ import {doc, setDoc} from "firebase/firestore";
 export default function useSignUpWithNewCredentials() {
     const [
         createUserWithEmailAndPassword,
-        user,
+        ,
         loading,
-        error
+        e,
     ] = useCreateUserWithEmailAndPassword(auth);
 
+    const [user, setuser] = useState(null)
+    const [error, seterror] = useState(null)
+
     const signup = async ({email, password, name}) => {
+        seterror(null)
         try {
-            if(!email.length || !password.length || !name.length){
-                throw new Error("Empty credentials")
-    
-            }
             const newUser = await createUserWithEmailAndPassword(email, password);
-            if(!newUser){
-                throw new Error("User already created")
+            if(!newUser){                  
+                throw new Error("User already exists.")
             }
-            const userDocument = {
+            
+            const userObj = {
                 uid: newUser.user.uid,
                 email: email,
                 name: name,
@@ -32,15 +33,18 @@ export default function useSignUpWithNewCredentials() {
                 posts: [],
                 createdAt: Date.now()
             }
-            console.log(newUser)
-            await setDoc(doc(firestore, "users", newUser.user.uid), userDocument)
-            localStorage.setItem("user", JSON.stringify(userDocument))
+
+            setuser(userObj);
+            
+            await setDoc(doc(firestore, "users", newUser.user.uid), userObj)
+            localStorage.setItem("user", JSON.stringify(user))
 
         } catch (error) {
+            seterror(error.message)
             console.log(error)
         }
         
     }
 
-    return {loading, error, signup}
+    return {user, loading, error, signup}
 }
