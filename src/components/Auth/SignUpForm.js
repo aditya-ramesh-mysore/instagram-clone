@@ -35,7 +35,7 @@ export default function SignUpForm() {
         <Stack gap={2}>
             <Image src="/images/logo.png" />
             <Form.Group controlId="formName" >
-                <Form.Control required type="name" placeholder="Name" onChange={(e) => setCredentials({...credentials, name: e.target.value})}/>
+                <Form.Control required type="name" placeholder="Username" onChange={(e) => setCredentials({...credentials, name: e.target.value})}/>
             </Form.Group>
             <Form.Group controlId="formEmail" >
                 <Form.Control required type="email" placeholder="Email" onChange={(e) => setCredentials({...credentials, email: e.target.value})}/>

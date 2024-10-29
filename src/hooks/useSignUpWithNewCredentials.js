@@ -4,6 +4,7 @@ import { auth, firestore } from '../firebase/firebase';
 import {doc, setDoc} from "firebase/firestore";
 import { useDispatch } from 'react-redux';
 import { setUser } from '../redux/slices/authSlice';
+import { useNavigate } from 'react-router-dom';
 
 export default function useSignUpWithNewCredentials() {
     const [
@@ -14,6 +15,7 @@ export default function useSignUpWithNewCredentials() {
     ] = useCreateUserWithEmailAndPassword(auth);
 
     const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     const [user, setuser] = useState(null)
     const [error, seterror] = useState(null)
@@ -22,6 +24,7 @@ export default function useSignUpWithNewCredentials() {
         seterror(null)
         try {
             const newUser = await createUserWithEmailAndPassword(email, password);
+            console.log(newUser)
             if(!newUser){                  
                 throw new Error("User already exists.")
             }
@@ -43,6 +46,7 @@ export default function useSignUpWithNewCredentials() {
             
             await setDoc(doc(firestore, "users", newUser.user.uid), userObj)
             localStorage.setItem("user", JSON.stringify(userObj))
+            navigate("/")
 
         } catch (error) {
             seterror(error.message)
